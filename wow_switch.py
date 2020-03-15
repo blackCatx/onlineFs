@@ -45,28 +45,53 @@ def random_move():
                          interval=(0.2 + random.random() * 0.5))
 
 
+
+
+def send_msg_clickkey(hwnd, key):
+    win32gui.SendMessage(hwnd, 0x100, key, 0)
+    win32gui.SendMessage(hwnd, 0x101, key, 0)
+
+def send_msg_move_up(hwnd):
+    win32gui.SendMessage(hwnd, 0x100, 0x57, 0)
+    time.sleep(0.3)
+    win32gui.SendMessage(hwnd, 0x101, 0x57, 0)
+
+
+def send_msg_move_down(hwnd):
+    win32gui.SendMessage(hwnd, 0x100, 0x53, 0)
+    time.sleep(0.5)
+    win32gui.SendMessage(hwnd, 0x101, 0x53, 0)
+
+def send_msg_jump(hwnd):
+    win32gui.SendMessage(hwnd, 0x100, 0x20, 0)
+    win32gui.SendMessage(hwnd, 0x101, 0x20, 0)
+    time.sleep(1) 
+
+
 time.sleep(10)
 while True:
     for i in wow_windows:
-        # switch_to_window(i)
         time.sleep(5)
-        # random_move()
-        # logout_login()
-        send_keypress(i, 0x57)
-        time.sleep(2)
-        send_keypress(i, 0x53)
+
+        send_msg_move_down(i)
+
         time.sleep(2)
         send_keypress(i, 0x31)
-        time.sleep(5)
+        time.sleep(4)
         send_keypress(i, 0x32)
         time.sleep(5)
         send_keypress(i, 0x33)
-        time.sleep(5)
-        send_keypress(i, 0x34)
-        time.sleep(5)
-        send_keypress(i, 0x35)
         time.sleep(2)
+        send_keypress(i, 0x34)
+        time.sleep(4)
+        send_keypress(i, 0x35)
+        time.sleep(1)
         send_keypress(i, 0x36)
         time.sleep(5)
+
+        send_msg_jump(i)
+        time.sleep(2)
+        send_msg_move_up(i)
+
         
-    time.sleep(100 + random.randint(100, 200))
+    time.sleep(240 + random.randint(1,20))

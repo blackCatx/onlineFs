@@ -93,14 +93,7 @@ def action(i):
     send_msg_move_down(i)
 
     time.sleep(random.randint(3, 4))
-    # 上Buff
-    if random.random() < 0.5:
-        # buff
-        send_msg_clickkey(i, 51)#3
-        time.sleep(random.randint(2, 3))
-        send_msg_clickkey(i, 52)#4
-        time.sleep(random.randint(2, 3))
-        time.sleep(2)
+  
     if random.random() < 0.5:
         # water 
         send_msg_clickkey(i, 49)#1
@@ -111,6 +104,15 @@ def action(i):
         nums[1] += nums[3]
         time.sleep(1)
 
+
+  # 上Buff
+    if random.random() < 0.5:
+        # buff
+        send_msg_clickkey(i, 51)#3
+        time.sleep(random.randint(2, 3))
+        send_msg_clickkey(i, 52)#4
+        time.sleep(random.randint(2, 3))
+        time.sleep(2)
 
     if random.random() < 0.5:
         # 做面包吃面包
@@ -152,7 +154,7 @@ while True:
     for i in wow_windows:
         action(i)
         # logout_login()
-        if count % 5 == 0:
+        if count != 0 and count % 5 == 0:
             transform(i)
     time.sleep(240 + random.randint(1, 9))
     count += 1  #35s
