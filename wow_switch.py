@@ -92,6 +92,5 @@ while True:
         send_msg_jump(i)
         time.sleep(2)
         send_msg_move_up(i)
-
-        
+                
     time.sleep(240 + random.randint(1,20))
